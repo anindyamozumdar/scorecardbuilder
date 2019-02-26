@@ -17,3 +17,5 @@ This application allows you to develop a scorecard and covers all aspects of the
 * If you have downloaded the simulated data, then choose *fgood* as the good/bad flag and *period* for stratification.
 
 * Uncheck to not consider *rnd* for binning.
+
+<img src="www/data-data.png" title="Hints" alt="Hints" width="80%" />

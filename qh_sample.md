@@ -1,7 +1,7 @@
 
 
-## Quick Help
-##### (Click ? for detailed help)
+## Help
+##### (Click ? for hints)
 
 * Sampling can only be done once the good/bad flag is specified in the
 Data tab.

@@ -1,7 +1,7 @@
 
 
-## Quick Help
-##### (Click ? for detailed help)
+## Help
+##### (Click ? for hints)
 
 * Binning can only be done once the sampling has been completed in the Sample
 tab. Refreshing the sample will require binning to be done again.

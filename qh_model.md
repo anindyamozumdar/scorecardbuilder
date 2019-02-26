@@ -1,7 +1,7 @@
 
 
-## Quick Help
-##### (Click ? for detailed help)
+## Help
+##### (Click ? for hints)
 
 * The model can be trained once the binning is complete.
 

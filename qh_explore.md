@@ -1,7 +1,7 @@
 
 
-## Quick Help
-##### (Click ? for detailed help)
+## Help
+##### (Click ? for hints)
 
 * Choose whether to see a summary report of all variables or the report for a single variable.
 
