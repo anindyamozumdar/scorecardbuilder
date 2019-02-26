@@ -31,3 +31,9 @@ Once you have uploaded the data, the interface will allow you to specify
 * the stratification variables - this is used in the Sample tab. When you are dividing the data into training and test samples, it is often a requirement that the distributions of few important variables are the same between the two samples. The good/bad flag is always chosen as a stratification variable by default. As the data will be grouped by these variables and then a random sample chosen for each group, too many groups may result in unexpected or erroneous behaviour. It is best to restrict the stratification to very few variables. One common situation which happens in practice that you want to maintain the same bad rate for every month, so if you have a variable which represents month you can choose that as a stratification variable.
 
 * the binning variables - these are the variables which will be considered for initial binning. If there are variables which you are not going to bin at all, then uncheck that variable in the interface. Note that only variables which have been specified as of type numeric, integer or character can be binned.
+
+### Hints
+
+* If you have downloaded the simulated data, then choose *fgood* as the good/bad flag and *period* for stratification.
+
+* Uncheck to not consider *rnd* for binning.
