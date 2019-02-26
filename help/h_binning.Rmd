@@ -2,4 +2,8 @@
 knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 ```
 
-## Help - Binning
+### Binning
+
+This is one of the most important steps in building a scorecard. A scorecard is eventually a logistic regression model where the dependent variable is the good/bad flag and the predictor variables are those which are expected to help classify good from bad records.
+
+In a scorecard, what is input into the regression is not the values of the characteristic but the WoE's of the attributes of the characteristics. Binning is the stage where you arrive at the different attributes of a characteristic depending on their WoE. The IV of the characteristic predicts how strongly it is able to classify good and bad accounts.

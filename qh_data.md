@@ -1,7 +1,7 @@
 
 
-## Quick Help
-##### (Click ? for detailed help)
+## Help
+##### (Click ? for an introduction to scorecards and other hints)
 
 * Upload the model data by clicking 'Browse'.
 
