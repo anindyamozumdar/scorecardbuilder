@@ -241,8 +241,7 @@ explore_server <- function(input, output, session, modeldata, modeldataspecs) {
   # Render the descriptive statistics or frequency / proportion table,
   # depending on whether the chosen variable is numeric or categorical.
   output$exploreoneds <- renderRHandsontable({
-    if (variable_report()$type == "numeric" |
-        variable_report()$type == "integer") {
+    if (variable_report()$type == "numeric") {
       rhandsontable(variable_report()$ds,
                     height = 500,
                     contextMenu = FALSE,
