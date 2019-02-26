@@ -16,4 +16,4 @@ The following diagrams show a numeric and a character variable, after they have 
 
 <img src="www/binning-numeric.png" title="Binning Numeric" alt="Binning Numeric" width="80%" />
 
-<img src="www/binning-character.png" title="Binning Numeric" alt="Binning Numeric" width="80%" />
+<img src="www/binning-character.png" title="Binning Character" alt="Binning Character" width="80%" />

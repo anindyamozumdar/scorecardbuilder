@@ -24,6 +24,6 @@ The following diagrams show a numeric and a character variable, after they have 
 knitr::include_graphics("www/binning-numeric.png")
 ```
 
-```{r, echo=FALSE, fig.cap="Binning Numeric", out.width="80%"}
+```{r, echo=FALSE, fig.cap="Binning Character", out.width="80%"}
 knitr::include_graphics("www/binning-character.png")
 ```
