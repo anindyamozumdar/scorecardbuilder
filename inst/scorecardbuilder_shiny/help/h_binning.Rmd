@@ -1,4 +1,6 @@
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+```
 
 ### Binning
 
@@ -6,14 +8,22 @@ The general objective of binning is to obtain a strong separation of the weight 
 
 This is generally done by constructing an initial set of bins, and then splitting and combining bins to arrive at a desired pattern. For each bin j, the WoE for that bin is defined by the following formula (where N is the total number of bins).
 
-<img src="www/binning-woe.png" title="Weight of Evidence" alt="Weight of Evidence" width="50%" />
+```{r, echo=FALSE, fig.cap="Weight of Evidence", out.width="50%"}
+knitr::include_graphics("www/binning-woe.png")
+```
 
 The IV is calculated at the characteristic level. Higher the IV, the more the predictive power of this characteristic in separating goods from bads. A general rule of thumb is that to be considered in the model the IV must be at least 3%.
 
-<img src="www/binning-iv.png" title="Information Value" alt="Information Value" width="80%" />
+```{r, echo=FALSE, fig.cap="Information Value", out.width="80%"}
+knitr::include_graphics("www/binning-iv.png")
+```
 
 The following diagrams show a numeric and a character variable, after they have been binned to obtain a monotonic WoE pattern.
 
-<img src="www/binning-numeric.png" title="Binning Numeric" alt="Binning Numeric" width="80%" />
+```{r, echo=FALSE, fig.cap="Binning Numeric", out.width="80%"}
+knitr::include_graphics("www/binning-numeric.png")
+```
 
-<img src="www/binning-character.png" title="Binning Character" alt="Binning Character" width="80%" />
+```{r, echo=FALSE, fig.cap="Binning Character", out.width="80%"}
+knitr::include_graphics("www/binning-character.png")
+```
