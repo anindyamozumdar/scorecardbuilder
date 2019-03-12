@@ -2,13 +2,13 @@
 % Please edit documentation in R/launch_scorecardbuilder.R
 \name{scorecardbuilder}
 \alias{scorecardbuilder}
-\title{launches the shinyAppDemo app}
+\title{Launches the scorecardbuilder application}
 \usage{
 scorecardbuilder()
 }
 \value{
-shiny application object
+Shiny application object
 }
 \description{
-launches the shinyAppDemo app
+Launches the scorecardbuilder application
 }

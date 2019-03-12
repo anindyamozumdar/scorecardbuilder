@@ -23,4 +23,5 @@ Imports:
     dplyr,
     smbinning,
     tidyr,
-    car
+    car,
+    scales
