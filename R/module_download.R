@@ -8,6 +8,8 @@
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
+#' @noRd
+#' @keywords internal
 download_ui <- function(id) {
   
   ns <- NS(id)
@@ -34,6 +36,8 @@ download_ui <- function(id) {
 #' @param binning binning object created in binning module
 #' @param scorecard scorecard object created in model module
 #' @param validation validation object created in validation module
+#' @noRd
+#' @keywords internal
 download_server <- function(input, output, session, binning, scorecard,
                             validation) {
   
