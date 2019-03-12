@@ -2,3 +2,13 @@
 
 export(scorecardbuilder)
 import(shiny)
+import(shinythemes)
+import(rhandsontable)
+import(readr)
+import(knitr)
+import(summarytools)
+import(ggplot2)
+import(dplyr)
+import(smbinning)
+import(tidyr)
+import(car)
