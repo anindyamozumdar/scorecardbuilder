@@ -6,8 +6,8 @@
 #'
 #' @example \dontrun {launchApp()}
 #'
-#' @import shiny
-#'
+#' @import shiny shinythemes rhandsontable readr knitr summarytools ggplot2
+#'     dplyr smbinning tidyr car
 
 
 # wrapper for shiny::shinyApp()

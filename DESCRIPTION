@@ -3,10 +3,10 @@ Title: Shiny interface to build a credit risk scorecard
 Version: 0.0.0.9000
 Authors@R: person("Anindya", "Mozumdar", email = "radmuzom@outlook.com",
                   role = c("aut", "cre"))
-Description: This package provides functions, along with a Shiny interface, to
-    build credit risk scorecards. It uses the methodology of using weight of
-    evidence and information value for characteristics, and logistic regression
-    for developing the scorecard.
+Description: This package provides a Shiny interface to build credit risk
+    scorecards. It uses the methodology of using weight of evidence and
+    information value for characteristics, and logistic regression for
+    developing the scorecard.
 Depends: R (>= 3.5.2)
 License: GPL-3
 Encoding: UTF-8
