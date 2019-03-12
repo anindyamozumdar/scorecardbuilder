@@ -3,13 +3,15 @@
 #' Return the data specification table given a data frame
 #'
 #' @param df a data frame
-#'
+#' 
 #' @return a data frame comprising the variable names in the input,
 #'     variable type (as detected by the function 'class'),
 #'     logical to identify a particular variable as the good/bad flag,
 #'     logical to identify a particular variable to be used for stratified
 #'     sampling, and a
 #'     logical to identify a particular variable to be considered for binning
+#' @noRd
+#' @keywords internal
 data_generate_specs <- function(df) {
   
   vnames <- gsub("\\.", "_", make.names(colnames(df), unique = TRUE))
@@ -34,6 +36,8 @@ data_generate_specs <- function(df) {
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
+#' @noRd
+#' @keywords internal
 data_ui <- function(id) {
   
   ns <- NS(id)
@@ -64,6 +68,8 @@ data_ui <- function(id) {
 #'   \item{modeldata}{reactive data frame of data uploaded by user}
 #'   \item{modeldataspecs}{reactive data frame of data specifications}
 #' }
+#' @noRd
+#' @keywords internal
 data_server <- function(input, output, session) {
   
   # Download simulated data.
