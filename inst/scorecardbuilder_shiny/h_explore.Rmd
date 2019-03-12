@@ -1,0 +1,15 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+```
+
+### Explore
+
+This tab allows you to do exploratory analysis on your data. You can either view a summary of all variables or see the details for a single variable.
+
+```{r, echo=FALSE, fig.cap="Summary", out.width="80%"}
+knitr::include_graphics("www/explore-all.png")
+```
+
+```{r, echo=FALSE, fig.cap="Single", out.width="80%"}
+knitr::include_graphics("www/explore-single.png")
+```

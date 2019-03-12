@@ -1,16 +1,16 @@
 # Source Files ------------------------------------------------------------
 
-source("codes/libs.R")
-source("codes/utils.R")
-source("codes/module_data.R")
-source("codes/module_explore.R")
-source("codes/module_sample.R")
-source("codes/module_binning.R")
-source("codes/module_model.R")
-source("codes/module_validation.R")
-source("codes/module_download.R")
-source("codes/server.R")
-source("codes/ui.R")
+# source("codes/libs.R")
+# source("codes/utils.R")
+# source("codes/module_data.R")
+# source("codes/module_explore.R")
+# source("codes/module_sample.R")
+# source("codes/module_binning.R")
+# source("codes/module_model.R")
+# source("codes/module_validation.R")
+# source("codes/module_download.R")
+# source("codes/server.R")
+# source("codes/ui.R")
 
 # Help Files --------------------------------------------------------------
 
@@ -26,4 +26,4 @@ source("codes/ui.R")
 
 # Run Application ---------------------------------------------------------
 
-shinyApp(ui, server)
+scorecardbuilder::scorecardbuilder()
