@@ -136,8 +136,8 @@ model_ui <- function(id) {
     column(
       9,
       uiOutput(ns("modelwindow"))
-    ),
-    column(3, includeMarkdown("qh_model.md"))
+    )
+    # column(3, includeMarkdown("qh_model.md"))
   )
   
 }

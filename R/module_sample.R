@@ -46,8 +46,8 @@ sample_ui <- function(id) {
       textOutput(ns("samplestratvars")),
       br(),
       uiOutput(ns("sampleoutput"))
-    ),
-    column(3, includeMarkdown("qh_sample.md"))
+    )
+    # column(3, includeMarkdown("qh_sample.md"))
   )
   
 }

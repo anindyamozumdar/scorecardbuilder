@@ -153,8 +153,8 @@ explore_ui <- function(id) {
                    choices = c("All Variables", "Single Variable"),
                    selected = "All Variables"),
       uiOutput(ns("explorewindow"))
-    ),
-    column(3, includeMarkdown("qh_explore.md"))
+    )
+    # column(3, includeMarkdown("qh_explore.md"))
   )
   
 }

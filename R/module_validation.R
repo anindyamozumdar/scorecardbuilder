@@ -67,8 +67,8 @@ validation_ui <- function(id) {
     column(
       9,
       uiOutput(ns("validationwindow"))
-    ),
-    column(3, includeMarkdown("qh_validation.md"))
+    )
+    # column(3, includeMarkdown("qh_validation.md"))
   )
   
 }

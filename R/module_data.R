@@ -47,8 +47,8 @@ data_ui <- function(id) {
       br(),
       br(),
       rHandsontableOutput(ns("modeldataspecs"))
-    ),
-    column(3, includeMarkdown("qh_data.md"))
+    )
+    # column(3, includeMarkdown("qh_data.md"))
   )
   
 }

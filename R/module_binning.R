@@ -86,8 +86,8 @@ binning_ui <- function(id) {
     column(
       9,
       uiOutput(ns("binningwindow"))
-    ),
-    column(3, includeMarkdown("qh_binning.md"))
+    )
+    # column(3, includeMarkdown("qh_binning.md"))
   )
   
 }
