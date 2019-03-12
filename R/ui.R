@@ -41,17 +41,12 @@ ui <- shinyUI(
       value = "download",
       download_ui("download_module"),
       icon = icon("download")
-    ),
-    tabPanel(
-      "",
-      value = "help",
-      helpText("Help"),
-      icon = icon("question")
-    ),
-    tabPanel(
-      "",
-      value = "stop",
-      icon = icon("stop")
     )
+    # tabPanel(
+    #   "",
+    #   value = "help",
+    #   helpText("Help"),
+    #   icon = icon("question")
+    # )
   )
 )
