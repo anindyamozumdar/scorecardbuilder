@@ -10,6 +10,8 @@
 #'
 #' @return A list of two components, the first component is the training
 #'     sample and the other the test sample
+#' @noRd
+#' @keywords internal
 sample_data <- function(ds, stratifiers = NULL, train_perc = 0.5) {
   
   ds$TEMP_ROW_NUMBER <- seq.int(nrow(ds))
@@ -33,6 +35,8 @@ sample_data <- function(ds, stratifiers = NULL, train_perc = 0.5) {
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
+#' @noRd
+#' @keywords internal
 sample_ui <- function(id) {
   
   ns <- NS(id)
@@ -66,6 +70,8 @@ sample_ui <- function(id) {
 #'   \item{stratification_vars}{stratification variables}
 #'   \item{modeltraintest}{list of training and test data}
 #' }
+#' @noRd
+#' @keywords internal
 sample_server <- function(input, output, session, modeldata, modeldataspecs) {
   
   # Return the variable which has been chosen as the good/bad flag.
