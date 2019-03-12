@@ -11,6 +11,8 @@
 #'
 #' @return a list of the metrics table along with the breaks for the score
 #'     bands
+#' @noRd
+#' @keywords internal
 validation_metrics_table <- function(df, score = "score", pbad = "p_bad",
                                      gb = "f_good", n_groups = 20,
                                      brks = NULL) {
@@ -60,6 +62,8 @@ validation_metrics_table <- function(df, score = "score", pbad = "p_bad",
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
+#' @noRd
+#' @keywords internal
 validation_ui <- function(id) {
   
   ns <- NS(id)
@@ -85,6 +89,8 @@ validation_ui <- function(id) {
 #' \describe{
 #'   \item{validation}{Object with the validation datasets}
 #' }
+#' @noRd
+#' @keywords internal
 validation_server <- function(input, output, session, scorecard, goodbad_var) {
   
   # Return a validation object.
