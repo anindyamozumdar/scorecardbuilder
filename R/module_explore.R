@@ -7,6 +7,8 @@
 #' @param max_modes Maximum number of modes to return, if there are multiple
 #'
 #' @return A vector containing the modes of x
+#' @noRd
+#' @keywords internal
 explore_modes <- function(x, na.rm = TRUE, max_modes = 5L) {
   if (na.rm) {
     x <- x[!is.na(x)]
@@ -26,6 +28,8 @@ explore_modes <- function(x, na.rm = TRUE, max_modes = 5L) {
 #' @param round_dec Number of decimal places to round the results
 #'
 #' @return A named vector of descriptive statistics
+#' @noRd
+#' @keywords internal
 explore_descstat_numeric <- function(x, round_dec = 2) {
   x_n <- length(unique(x))
   x_nmiss <- sum(is.na(x))
@@ -53,6 +57,8 @@ explore_descstat_numeric <- function(x, round_dec = 2) {
 #' @param x A vector of numeric values
 #'
 #' @return A ggplot2 object showing the distribution of the variable
+#' @noRd
+#' @keywords internal
 explore_distribution_numeric <- function(x, vname = "numeric") {
   x <- x[!is.na(x)]
   nuniq <- length(unique(x))
@@ -86,6 +92,8 @@ explore_distribution_numeric <- function(x, vname = "numeric") {
 #'     of values exceeds this then the remaining are clubbed as OTHERS
 #'
 #' @return A data frame of frequencies and percentages for each value
+#' @noRd
+#' @keywords internal
 explore_countperc_categorical <- function(x, max_values = 30) {
   df <- data.frame(Value = x, stringsAsFactors = FALSE)
   df <- df %>%
@@ -112,6 +120,8 @@ explore_countperc_categorical <- function(x, max_values = 30) {
 #'
 #' @return A list containing the ggplot2 object showing the distribution of
 #'     the variable as well as the data frame of frequencies and percentages
+#' @noRd
+#' @keywords internal
 explore_distribution_categorical <- function(x, vname = "categorical") {
   d <- explore_countperc_categorical(x)
   g <- ggplot(d, aes(factor(Value), Proportion)) +
@@ -143,6 +153,8 @@ explore_distribution_categorical <- function(x, vname = "categorical") {
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
+#' @noRd
+#' @keywords internal
 explore_ui <- function(id) {
   
   ns <- NS(id)
@@ -166,6 +178,8 @@ explore_ui <- function(id) {
 #' @param input, output, session standard \code{shiny} boilerplate
 #' @param modeldata data frame containing the credit scoring data
 #' @param modeldataspecs data specification table for credit scoring data
+#' @noRd
+#' @keywords internal
 explore_server <- function(input, output, session, modeldata, modeldataspecs) {
   
   # Summary report of all variables.
