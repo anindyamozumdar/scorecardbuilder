@@ -47,9 +47,13 @@ server <- shinyServer(function(input, output, session) {
     # Display help page if the Help icon is clicked and return to existing tab
     if (nav_top == "help") {
       updateTabsetPanel(session, "nav_top", selected = current_tab)
+      help_file <- system.file(
+        paste0("scorecardbuilder_shiny/h_", current_tab, ".md"),
+        package = "scorecardbuilder"
+      )
       showModal(
         modalDialog(
-          includeMarkdown(paste0("h_", current_tab, ".md")),
+          includeMarkdown(help_file),
           title = "Help",
           size = "l",
           easyClose = FALSE,

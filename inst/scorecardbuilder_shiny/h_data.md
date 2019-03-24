@@ -1,6 +1,4 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
-```
+
 
 ### Introduction
 
@@ -10,12 +8,7 @@ This is an interface to develop credit risk scorecards. A credit risk scorecard 
 
 A scorecard comprises characteristics, attributes and score points. A characteristic is a variable which has been determined to be predictive of the risk of an application. An attribute of a characteristic is a value or a group of values valid for that characteristic. A score point is the score assigned for that characteristic and attribute value. A very simple scorecard is shown in the diagram below. In this example, an applicant whose debt to income ratio is 50% will be assigned a score of 62 for this characteristic. The scores are added across all characteristics to arrive at the total score. Each score corresponds to a probability that the customer will go bad, i.e. default on their loan.
 
-```{r, echo=FALSE, fig.cap="Simple scorecard", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/data-scorecard.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/data-scorecard.png" title="Simple scorecard" alt="Simple scorecard" width="50%" />
 
 This application allows you to develop a scorecard and covers all aspects of the credit scoring process. To learn more about this topic, refer to the book 'Credit Risk Scorecards' by Naeem Siddiqui (2005).
 
@@ -25,9 +18,4 @@ This application allows you to develop a scorecard and covers all aspects of the
 
 * Uncheck to not consider *rnd* for binning.
 
-```{r, echo=FALSE, fig.cap="Hints", out.width="80%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/data-data.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/data-data.png" title="Hints" alt="Hints" width="80%" />

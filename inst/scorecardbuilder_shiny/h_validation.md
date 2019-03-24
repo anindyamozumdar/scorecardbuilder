@@ -1,6 +1,4 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
-```
+
 
 ### Validation
 
@@ -20,23 +18,8 @@ Rules of thumb
 
 * PSI should be less than 10% (PSI uses the same formula as IV except that the distribution of records are used rather than the percentage of good and bad records)
 
-```{r, echo=FALSE, fig.cap="Discrimination", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/validation-discrimination.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/validation-discrimination.png" title="Discrimination" alt="Discrimination" width="50%" />
 
-```{r, echo=FALSE, fig.cap="Accuracy", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/validation-accuracy.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/validation-accuracy.png" title="Accuracy" alt="Accuracy" width="50%" />
 
-```{r, echo=FALSE, fig.cap="Stability", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/validation-stability.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/validation-stability.png" title="Stability" alt="Stability" width="50%" />

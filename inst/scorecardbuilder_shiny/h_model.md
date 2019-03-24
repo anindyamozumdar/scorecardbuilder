@@ -1,6 +1,4 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
-```
+
 
 ### Model
 
@@ -22,23 +20,8 @@ The following should be checked before finalising the scorecard
 
 * The score to log-odds relationships are approximately linear
 
-```{r, echo=FALSE, fig.cap="Logistic Regression", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/model-logistic.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/model-logistic.png" title="Logistic Regression" alt="Logistic Regression" width="50%" />
 
-```{r, echo=FALSE, fig.cap="Score to Log Odds", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/model-stoln.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/model-stoln.png" title="Score to Log Odds" alt="Score to Log Odds" width="50%" />
 
-```{r, echo=FALSE, fig.cap="Final Scorecard", out.width="50%"}
-knitr::include_graphics(
-  system.file("scorecardbuilder_shiny/www/model-scorecard.png",
-              package = "scorecardbuilder")
-)
-```
+<img src="D:/Online/Personal/Training/scorecardbuilder/inst/scorecardbuilder_shiny/www/model-scorecard.png" title="Final Scorecard" alt="Final Scorecard" width="50%" />

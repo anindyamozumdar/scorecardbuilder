@@ -7,5 +7,8 @@ knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 Use the slider to choose what percentage of the records should be in the training sample. The remaining records will be in the test sample.
 
 ```{r, echo=FALSE, fig.cap="Sampling", out.width="80%"}
-knitr::include_graphics("www/sample-choose.png")
+knitr::include_graphics(
+  system.file("scorecardbuilder_shiny/www/sample-choose.png",
+              package = "scorecardbuilder")
+)
 ```
