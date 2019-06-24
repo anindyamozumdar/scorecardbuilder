@@ -8,14 +8,6 @@ server <- shinyServer(function(input, output, session) {
   # Data --------------------------------------------------------------------
   md <- callModule(data_server, "data_module")
   
-  # Explore ----------------------------------------------------------------
-  ex <- callModule(explore_server, "explore_module", md$modeldata,
-                   md$modeldataspecs)
-
-  # Sample ------------------------------------------------------------------
-  smpl <- callModule(sample_server, "sample_module", md$modeldata,
-                     md$modeldataspecs)
-
   # Binning -----------------------------------------------------------------
   bin <- callModule(binning_server, "binning_module", smpl$modeltraintest,
                     md$modeldataspecs, smpl$goodbad_var)
