@@ -24,12 +24,6 @@ ui <- shinyUI(
       span("Validation", title = "Scorecard validation"),
       validation_ui("validation_module"),
       value = "validation"
-    ),
-    tabPanel(
-      "",
-      value = "help",
-      helpText("Help"),
-      icon = icon("question")
     )
   )
 )
