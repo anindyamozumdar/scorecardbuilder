@@ -7,7 +7,7 @@ Description: This package provides a Shiny interface to build credit risk
     scorecards. It uses the methodology of using weight of evidence and
     information value for characteristics, and logistic regression for
     developing the scorecard.
-Depends: R (>= 3.5.2)
+Depends: R (>= 3.5.1)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -16,12 +16,8 @@ Imports:
     shiny,
     shinythemes,
     rhandsontable,
-    readr,
-    knitr,
-    summarytools,
+    data.table,
     ggplot2,
-    dplyr,
     smbinning,
-    tidyr,
     car,
     scales
