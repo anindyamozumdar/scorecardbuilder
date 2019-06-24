@@ -9,16 +9,16 @@ server <- shinyServer(function(input, output, session) {
   md <- callModule(data_server, "data_module")
   
   # Binning -----------------------------------------------------------------
-  bin <- callModule(binning_server, "binning_module", smpl$modeltraintest,
-                    md$modeldataspecs, smpl$goodbad_var)
+  # bin <- callModule(binning_server, "binning_module", smpl$modeltraintest,
+  #                   md$modeldataspecs, smpl$goodbad_var)
 
   # Model -------------------------------------------------------------------
-  model <- callModule(model_server, "model_module", smpl$modeltraintest,
-                      md$modeldataspecs, bin$binning, smpl$goodbad_var)
+  # model <- callModule(model_server, "model_module", smpl$modeltraintest,
+  #                     md$modeldataspecs, bin$binning, smpl$goodbad_var)
 
   # Validation --------------------------------------------------------------
-  validation <- callModule(validation_server, "validation_module",
-                           model$scorecard, smpl$goodbad_var)
+  # validation <- callModule(validation_server, "validation_module",
+  #                          model$scorecard, smpl$goodbad_var)
 
   # Others ------------------------------------------------------------------
   

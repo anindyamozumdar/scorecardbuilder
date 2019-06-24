@@ -42,17 +42,28 @@ data_ui <- function(id) {
   
   ns <- NS(id)
   tagList(
-    column(
-      9,
-      fileInput(ns("modeldata"), "Upload Data", accept = "text/csv",
-                placeholder = "CSV file"),
-      downloadLink(ns("downloadmodeldata"), "Download simulated data"),
-      br(),
-      br(),
-      br(),
-      rHandsontableOutput(ns("modeldataspecs"))
+    sidebarLayout(
+      sidebarPanel(
+        fileInput(ns("modeldata"), "Upload Data", accept = "text/csv",
+                  placeholder = "CSV file"),
+        downloadLink(ns("downloadmodeldata"), "Download simulated data"),
+        br(),
+        br(),
+        br(),
+        selectInput(ns("gbflag"), "Choose good/bad flag (bad = 1)",
+                    choices = NULL),
+        selectInput(ns("ttflag"),
+                    "Choose training/testing flag (training = 1)",
+                    choices = NULL),
+        radioButtons(ns("sampwt"), "Sample weights present?",
+                     choices = c("Y", "N"), inline = TRUE),
+        selectInput(ns("sampwtvar"), "Choose sample weight variable",
+                    choices = NULL)
+      ),
+      mainPanel(
+        rHandsontableOutput(ns("modeldataspecs"))
+      )
     )
-    # column(3, includeMarkdown("qh_data.md"))
   )
   
 }
@@ -76,7 +87,7 @@ data_server <- function(input, output, session) {
   output$downloadmodeldata <- downloadHandler(
     filename = "smbsimdf1.csv",
     content = function(con) {
-      write_csv(smbsimdf1, con)
+      write_csv(smbinning::smbsimdf1, con)
     }
   )
   
