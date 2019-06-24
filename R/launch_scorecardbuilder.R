@@ -4,8 +4,7 @@
 #'
 #' @return Shiny application object
 #'
-#' @import shiny shinythemes rhandsontable readr knitr summarytools ggplot2
-#'     dplyr smbinning tidyr
+#' @import shiny shinythemes rhandsontable data.table ggplot2 smbinning
 #' @importFrom stats binomial glm predict quantile reformulate sd var
 #'     weighted.mean
 #' @importFrom scales percent number_format

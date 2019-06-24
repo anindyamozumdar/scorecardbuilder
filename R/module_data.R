@@ -100,8 +100,7 @@ data_server <- function(input, output, session) {
   # Read the user upload into a reactive data frame.
   modeldata <- reactive({
     withProgress({
-      md <- read_csv(modeldatafile()$datapath, guess_max = 50000) %>%
-        as.data.frame()
+      md <- fread(modeldatafile()$datapath)
       setProgress(message = "Completed", value = 1)
       Sys.sleep(1)
     }, message = "Reading data...", value = 0.5)
