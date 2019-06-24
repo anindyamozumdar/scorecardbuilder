@@ -5,25 +5,23 @@
 #' @param df a data frame
 #' 
 #' @return a data frame comprising the variable names in the input,
-#'     variable type (as detected by the function 'class'),
-#'     logical to identify a particular variable as the good/bad flag,
-#'     logical to identify a particular variable to be used for stratified
-#'     sampling, and a
-#'     logical to identify a particular variable to be considered for binning
+#'     variable type (as detected by the function 'class'), and a
+#'     logical to identify whether a particular variable is to be
+#'     considered for binning
+#'     
+#' @details
+#' The variable names will be converted to valid names using the
+#' \code{make.names} function and all instances of . converted to _
 #' @noRd
 #' @keywords internal
 data_generate_specs <- function(df) {
   
   vnames <- gsub("\\.", "_", make.names(colnames(df), unique = TRUE))
-  vclasses <- vapply(df, class, character(1))
   vtypes <- vapply(df, class, character(1))
   vtypes <- factor(vtypes, levels = c("numeric", "integer", "character",
                                       "Date"))
-  vgoodbad <- rep(FALSE, times = length(vnames))
-  vstratsample <- rep(FALSE, times = length(vnames))
   vbin <- rep(TRUE, times = length(vnames))
-  data.frame(vnames = vnames, vtypes = vtypes, vgoodbad = vgoodbad,
-             vstratsample = vstratsample, vbin = vbin,
+  data.frame(vnames = vnames, vtypes = vtypes, vbin = vbin,
              row.names = NULL, stringsAsFactors = FALSE)
   
 }
@@ -61,7 +59,7 @@ data_ui <- function(id) {
                     choices = NULL)
       ),
       mainPanel(
-        rHandsontableOutput(ns("modeldataspecs"))
+        div(rHandsontableOutput(ns("modeldataspecs")), style = "width:80%;")
       )
     )
   )
@@ -99,6 +97,7 @@ data_server <- function(input, output, session) {
   
   # Read the user upload into a reactive data frame.
   modeldata <- reactive({
+    req(modeldatafile())
     withProgress({
       md <- fread(modeldatafile()$datapath)
       setProgress(message = "Completed", value = 1)
@@ -116,9 +115,10 @@ data_server <- function(input, output, session) {
       ospecs <- hot_to_r(imds)
       ovnames <- ospecs[["vnames"]]
       vnames <- specs[["vnames"]]
-      if (!all(vapply(ovnames, function(x) {
+      check_names <- function(x) {
         x %in% vnames
-      }, logical(1)))) {
+      }
+      if (!all(vapply(ovnames, check_names, logical(1)))) {
         mds <- specs
       } else {
         mds <- ospecs
@@ -162,12 +162,9 @@ data_server <- function(input, output, session) {
                   contextMenu = FALSE,
                   stretchH = "all",
                   rowHeaders = NULL,
-                  colHeaders = c("Variable", "Type", "Good/Bad Flag",
-                                 "Stratification", "Bin")) %>%
+                  colHeaders = c("Variable", "Type", "Bin")) %>%
       hot_cols(columnSorting = FALSE) %>%
       hot_col("Variable", readOnly = TRUE) %>%
-      hot_col("Good/Bad Flag", renderer = bool_renderer) %>%
-      hot_col("Stratification", renderer = bool_renderer) %>%
       hot_col("Bin", renderer = reverse_bool_renderer)
   })
   

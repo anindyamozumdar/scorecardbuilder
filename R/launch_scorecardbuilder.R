@@ -10,5 +10,7 @@
 #' @importFrom scales percent number_format
 #' @importFrom car vif
 scorecardbuilder <- function() {
+  options(shiny.maxRequestSize = Inf)
+  options(shiny.minified = TRUE)
   shinyApp(ui = ui, server = server)
 }
