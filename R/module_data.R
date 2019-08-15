@@ -51,9 +51,9 @@ data_ui <- function(id) {
         selectInput(ns("gbflag"), "Choose good/bad flag (bad = 1)",
                     choices = NULL),
         selectInput(ns("ttflag"),
-                    "Choose training/testing flag (training = 1)",
+                    "Choose train/test flag (train = 1)",
                     choices = NULL),
-        radioButtons(ns("sampwt"), "Sample weights present?",
+        radioButtons(ns("sampwt"), "Sample weights?",
                      choices = c("Y", "N"), inline = TRUE),
         selectInput(ns("sampwtvar"), "Choose sample weight variable",
                     choices = NULL)
@@ -106,19 +106,22 @@ data_server <- function(input, output, session) {
     md
   })
   
+  # Generate the specs whenever modeldata changes.
+  generatespecs <- reactive({
+    req(modeldata())
+    data_generate_specs(modeldata())
+  })
+  
   # If the user uploads new data, then regenerate the specifications.
   # Otherwise store any edits made via the user interface.
   modeldataspecs <- reactive({
     imds <- input$modeldataspecs
-    specs <- data_generate_specs(modeldata())
+    specs <- generatespecs()
     if (length(imds) > 0) {
       ospecs <- hot_to_r(imds)
       ovnames <- ospecs[["vnames"]]
       vnames <- specs[["vnames"]]
-      check_names <- function(x) {
-        x %in% vnames
-      }
-      if (!all(vapply(ovnames, check_names, logical(1)))) {
+      if (!all(vapply(ovnames, function(x) x %in% vnames, logical(1)))) {
         mds <- specs
       } else {
         mds <- ospecs
@@ -127,6 +130,14 @@ data_server <- function(input, output, session) {
       mds <- specs
     }
     mds
+  })
+  
+  # Observe any specs change to update the select inputs.
+  observeEvent(generatespecs(), {
+    specs <- generatespecs()
+    updateSelectInput(session, "gbflag", choices = specs[["vnames"]])
+    updateSelectInput(session, "ttflag", choices = specs[["vnames"]])
+    updateSelectInput(session, "sampwtvar", choices = specs[["vnames"]])
   })
   
   # Render the data specifications table. Ensure that any edits made by the
@@ -168,10 +179,43 @@ data_server <- function(input, output, session) {
       hot_col("Bin", renderer = reverse_bool_renderer)
   })
   
+  # Good/bad flag name.
+  gbflag <- reactive({
+    req(input$gbflag)
+    input$gbflag
+  })
+  
+  # Train/test flag name.
+  ttflag <- reactive({
+    req(input$ttflag)
+    input$ttflag
+  })
+  
+  # Sample weight yes/no.
+  sampwt <- reactive({
+    req(input$sampwt)
+    input$sampwt
+  })
+  
+  # Sample weight variables if yes, NULL if no.
+  sampwtvar <- reactive({
+    req(input$sampwtvar)
+    sampwt <- sampwt()
+    if (sampwt == "Y") {
+      return(input$sampwtvar)
+    } else {
+      return(NULL)
+    }
+  })
+  
   # Return the reactive data and data specifications.
   list(
     modeldata = modeldata,
-    modeldataspecs = modeldataspecs
+    modeldataspecs = modeldataspecs,
+    gbflag = gbflag,
+    ttflag = ttflag,
+    sampwt = sampwt,
+    sampwtvar = sampwtvar
   )
   
 }
