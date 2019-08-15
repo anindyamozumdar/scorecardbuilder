@@ -9,6 +9,7 @@
 #'     weighted.mean
 #' @importFrom scales percent number_format
 #' @importFrom car vif
+#' @importFrom shinyhelper helper observe_helpers
 scorecardbuilder <- function() {
   options(shiny.maxRequestSize = Inf)
   options(shiny.minified = TRUE)

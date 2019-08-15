@@ -1,6 +1,8 @@
 # Application - Server ----------------------------------------------------
 
 server <- shinyServer(function(input, output, session) {
+  
+  observe_helpers()
 
   # Session Globals ---------------------------------------------------------
   current_tab <- "data"

@@ -48,8 +48,13 @@ data_ui <- function(id) {
         br(),
         br(),
         br(),
-        selectInput(ns("gbflag"), "Choose good/bad flag (bad = 1)",
-                    choices = NULL),
+        helper(
+          selectInput(ns("gbflag"), "Choose good/bad flag (bad = 1)",
+                      choices = NULL),
+          type = "inline",
+          title = "Help",
+          content = "help"
+        ),
         selectInput(ns("ttflag"),
                     "Choose train/test flag (train = 1)",
                     choices = NULL),

@@ -20,4 +20,5 @@ Imports:
     ggplot2,
     smbinning,
     car,
-    scales
+    scales,
+    shinyhelper
