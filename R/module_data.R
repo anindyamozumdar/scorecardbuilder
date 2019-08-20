@@ -110,7 +110,7 @@ data_server <- function(input, output, session) {
   output$downloadmodeldata <- downloadHandler(
     filename = "smbsimdf1.csv",
     content = function(con) {
-      write_csv(smbinning::smbsimdf1, con)
+      fwrite(smbinning::smbsimdf1, con)
     }
   )
   
