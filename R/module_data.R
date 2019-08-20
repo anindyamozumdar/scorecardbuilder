@@ -55,11 +55,21 @@ data_ui <- function(id) {
           title = "Help",
           content = "help"
         ),
-        selectInput(ns("ttflag"),
-                    "Choose train/test flag (train = 1)",
-                    choices = NULL),
-        radioButtons(ns("sampwt"), "Sample weights?",
-                     choices = c("Y", "N"), inline = TRUE),
+        helper(
+          selectInput(ns("ttflag"),
+                      "Choose train/test flag (train = 1)",
+                      choices = NULL),
+          type = "inline",
+          title = "Help",
+          content = "help"
+        ),
+        helper(
+          radioButtons(ns("sampwt"), "Sample weights?",
+                       choices = c("N", "Y"), inline = TRUE),
+          type = "inline",
+          title = "Help",
+          content = "help"
+        ),
         selectInput(ns("sampwtvar"), "Choose sample weight variable",
                     choices = NULL)
       ),
@@ -81,6 +91,11 @@ data_ui <- function(id) {
 #' \describe{
 #'   \item{modeldata}{reactive data frame of data uploaded by user}
 #'   \item{modeldataspecs}{reactive data frame of data specifications}
+#'       modeldata = modeldata,
+#'   \item{gbflag}{name of the good/bad flag variable}
+#'   \item{ttflag}{name of the train/test flag variable}
+#'   \item{sampwt}{Y/N to indicate if there is a sample weight}
+#'   \item{sampwtvar}{name of the variable holding the sample weight}
 #' }
 #' @noRd
 #' @keywords internal
@@ -210,6 +225,33 @@ data_server <- function(input, output, session) {
       return(input$sampwtvar)
     } else {
       return(NULL)
+    }
+  })
+  
+  # Observe the good/bad flag and train/test flag to ensure it is 1/0.
+  observeEvent(c(gbflag(), ttflag()), {
+    gb <- gbflag()
+    tt <- ttflag()
+    md <- modeldata()
+    agb <- any(!(md[[gb]] %in% c(0, 1)))
+    att <- any(!(md[[tt]] %in% c(0, 1)))
+    if (agb || att) {
+      showNotification("Good/Bad and Train/Test flag must contain 0/1 values",
+                       duration = NULL, type = "error")
+    }
+  })
+  
+  # Observe the sample weight variable to ensure it is numeric.
+  observeEvent(sampwtvar(), {
+    sw <- sampwt()
+    swv <- sampwtvar()
+    ds <- generatespecs()
+    vtype <- ds[ds[["vnames"]] == swv, "vtypes"]
+    if (sw == "Y") {
+      if (!(vtype %in% c('numeric', 'integer'))) {
+        showNotification("Sample weight must be a numeric variable",
+                         duration = NULL, type = "error")
+      }
     }
   })
   
