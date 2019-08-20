@@ -74,7 +74,12 @@ data_ui <- function(id) {
                     choices = NULL)
       ),
       mainPanel(
-        div(rHandsontableOutput(ns("modeldataspecs")), style = "width:80%;")
+        div(helper(
+          rHandsontableOutput(ns("modeldataspecs")),
+          type = "inline",
+          title = "Help",
+          content = "help"
+        ), style = "width:80%;")
       )
     )
   )
