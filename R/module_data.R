@@ -205,14 +205,44 @@ data_server <- function(input, output, session) {
   })
   
   # Good/bad flag name.
-  gbflag <- reactive({
+  gbflag <- eventReactive(c(input$gbflag, modeldataspecs()), {
     req(input$gbflag)
+    gb <- input$gbflag
+    md <- modeldata()
+    agb <- any(!(md[[gb]] %in% c(0, 1)))
+    if (agb) {
+      showNotification("Good/Bad flag must contain 0/1 values only.",
+                       duration = NULL, type = "error")
+      return(NULL)
+    }
+    ds <- modeldataspecs()
+    vtype <- ds[ds[["vnames"]] == gb, "vtypes"]
+    if (!(vtype %in% c('numeric', 'integer'))) {
+      showNotification("Good/Bad flag must be a numeric variable.",
+                       duration = NULL, type = "error")
+      return(NULL)
+    }
     input$gbflag
   })
   
   # Train/test flag name.
-  ttflag <- reactive({
+  ttflag <- eventReactive(c(input$ttflag, modeldataspecs()), {
     req(input$ttflag)
+    tt <- input$ttflag
+    md <- modeldata()
+    att <- any(!(md[[tt]] %in% c(0, 1)))
+    if (att) {
+      showNotification("Train/Test flag must contain 0/1 values only.",
+                       duration = NULL, type = "error")
+      return(NULL)
+    }
+    ds <- modeldataspecs()
+    vtype <- ds[ds[["vnames"]] == tt, "vtypes"]
+    if (!(vtype %in% c('numeric', 'integer'))) {
+      showNotification("Train/Test flag must be a numeric variable.",
+                       duration = NULL, type = "error")
+      return(NULL)
+    }
     input$ttflag
   })
   
@@ -223,41 +253,29 @@ data_server <- function(input, output, session) {
   })
   
   # Sample weight variables if yes, NULL if no.
-  sampwtvar <- reactive({
+  sampwtvar <- eventReactive(c(input$sampwtvar, modeldataspecs()), {
     req(input$sampwtvar)
     sampwt <- sampwt()
+    swv <- input$sampwtvar
     if (sampwt == "Y") {
-      return(input$sampwtvar)
+      ds <- modeldataspecs()
+      vtype <- ds[ds[["vnames"]] == swv, "vtypes"]
+      if (!(vtype %in% c('numeric', 'integer'))) {
+        showNotification("Sample weight must be a numeric variable.",
+                         duration = NULL, type = "error")
+        return(NULL)
+      }
+      return(swv)
     } else {
       return(NULL)
     }
   })
   
-  # Observe the good/bad flag and train/test flag to ensure it is 1/0.
-  observeEvent(c(gbflag(), ttflag()), {
-    gb <- gbflag()
-    tt <- ttflag()
-    md <- modeldata()
-    agb <- any(!(md[[gb]] %in% c(0, 1)))
-    att <- any(!(md[[tt]] %in% c(0, 1)))
-    if (agb || att) {
-      showNotification("Good/Bad and Train/Test flag must contain 0/1 values",
-                       duration = NULL, type = "error")
-    }
-  })
-  
-  # Observe the sample weight variable to ensure it is numeric.
-  observeEvent(sampwtvar(), {
-    sw <- sampwt()
-    swv <- sampwtvar()
-    ds <- generatespecs()
-    vtype <- ds[ds[["vnames"]] == swv, "vtypes"]
-    if (sw == "Y") {
-      if (!(vtype %in% c('numeric', 'integer'))) {
-        showNotification("Sample weight must be a numeric variable",
-                         duration = NULL, type = "error")
-      }
-    }
+  # Force call of key settings.
+  observe({
+    gbflag()
+    ttflag()
+    sampwtvar()
   })
   
   # Return the reactive data and data specifications.
