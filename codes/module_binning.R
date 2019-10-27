@@ -12,8 +12,6 @@
 #' @return A list of two components, the first component is the binned variable
 #'     in the training data and the second component is the binning applied on
 #'     the test data
-#' @noRd
-#' @keywords internal
 binning_numeric <- function(x, y, dftrain, dftest, cuts = NULL,
                             type = "CIT") {
   if (is.null(cuts) && type == "CIT") {
@@ -50,8 +48,6 @@ binning_numeric <- function(x, y, dftrain, dftest, cuts = NULL,
 #' @return A list of two components, the first component is the binned variable
 #'     in the training data and the second component is the binning applied on
 #'     the test data
-#' @noRd
-#' @keywords internal
 binning_categorical <- function(x, y, dftrain, dftest, groups = NULL) {
   dftrain[[x]] <- factor(dftrain[[x]])
   dftest[[x]] <- factor(dftest[[x]])
@@ -83,8 +79,6 @@ binning_categorical <- function(x, y, dftrain, dftest, groups = NULL) {
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
-#' @noRd
-#' @keywords internal
 binning_ui <- function(id) {
   
   ns <- NS(id)
@@ -92,8 +86,8 @@ binning_ui <- function(id) {
     column(
       9,
       uiOutput(ns("binningwindow"))
-    )
-    # column(3, includeMarkdown("qh_binning.md"))
+    ),
+    column(3, includeMarkdown("qh_binning.md"))
   )
   
 }
@@ -112,8 +106,6 @@ binning_ui <- function(id) {
 #' \describe{
 #'   \item{binning}{list containing binning of variables created by user}
 #' }
-#' @noRd
-#' @keywords internal
 binning_server <- function(input, output, session, modeltraintest,
                            modeldataspecs, goodbad_var) {
   

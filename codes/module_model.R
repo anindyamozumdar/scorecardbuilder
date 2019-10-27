@@ -8,8 +8,6 @@
 #' @param newvar Name of the variable where the WoE is to be stored
 #' 
 #' @return Dataset with the WoE created in a new variable
-#' @noRd
-#' @keywords internal
 model_woe_numeric <- function(df, bin, var, newvar) {
   ivtable <- bin$ivtable
   nr <- nrow(ivtable)
@@ -40,8 +38,6 @@ model_woe_numeric <- function(df, bin, var, newvar) {
 #' @param newvar Name of the variable where the WoE is to be stored
 #' 
 #' @return Dataset with the WoE created in a new variable
-#' @noRd
-#' @keywords internal
 model_woe_categorical <- function(df, bin, var, newvar) {
   ivtable <- bin$ivtable
   nr <- nrow(ivtable)
@@ -79,8 +75,6 @@ model_woe_categorical <- function(df, bin, var, newvar) {
 #' 
 #' @return Dataset after adding the good rate, bad rate, good-bad log odds
 #'     and score
-#' @noRd
-#' @keywords internal
 model_add_predictions <- function(df, logistic, scale_slope,
                                   scale_intercept, pgood = "p_good",
                                   pbad = "p_bad", ln_gb = "log_gb_odds",
@@ -99,8 +93,6 @@ model_add_predictions <- function(df, logistic, scale_slope,
 #' @param odds Odds at base score
 #' 
 #' @return A vector containing the scaling slope and intercept
-#' @noRd
-#' @keywords internal
 model_scaling_parameters <- function(pdo, score, odds) {
   slope <- pdo / log(2)
   intercept <- score - slope * log(odds)
@@ -118,8 +110,6 @@ model_scaling_parameters <- function(pdo, score, odds) {
 #' @param vname The name of the variable
 #'
 #' @return Data frame of bin values and score points
-#' @noRd
-#' @keywords internal
 model_score_table <- function(bin, coef, intcpt, scale_slope, scale_intercept,
                               n_predictors, vname) {
   ivtable <- bin$ivtable
@@ -139,8 +129,6 @@ model_score_table <- function(bin, coef, intcpt, scale_slope, scale_intercept,
 #'     see \code{shiny::\link[shiny]{NS}}
 #'
 #' @return a \code{shiny::\link[shiny]{tagList}} containing UI elements
-#' @noRd
-#' @keywords internal
 model_ui <- function(id) {
   
   ns <- NS(id)
@@ -148,8 +136,8 @@ model_ui <- function(id) {
     column(
       9,
       uiOutput(ns("modelwindow"))
-    )
-    # column(3, includeMarkdown("qh_model.md"))
+    ),
+    column(3, includeMarkdown("qh_model.md"))
   )
   
 }
@@ -169,8 +157,6 @@ model_ui <- function(id) {
 #' \describe{
 #'   \item{scorecard}{Scorecard object}
 #' }
-#' @noRd
-#' @keywords internal
 model_server <- function(input, output, session, modeltraintest,
                          modeldataspecs, binning, goodbad_var) {
   
